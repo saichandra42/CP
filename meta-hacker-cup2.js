@@ -18,10 +18,10 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
     // Process each test case
     const outputData = [];
     for (let i = 1; i <= T; i++) {
-        const [S, D, K] = lines[i].split(' ').map(Number);
+        const [r,c,a,b] = lines[i].split(' ').map(Number);
 
         // Perform some operation with S, D, and K (for example, calculate a result)
-        const result = chesseburger(S, D, K)
+        const result = dimSumDelivery(r,c,a,b)
 
         // Store the result for this test case in the outputData array
         outputData.push(`Case #${i}: ${result}`);
@@ -37,10 +37,16 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
     });
 });
 
+// r = rows labelled from 1 to r
+// c = columns labelled from 1 to c
+// alice = 1 to a units down
+// bob = 1 to b units right
 
-function chesseburger(a,b,c) {
-    
+// alice pushes first
+// does alice have a winning strategy ? Yes/No
+
+function dimSumDelivery(r,c,a,b) {
+    return r > c ? "YES" : "NO";
 };
-
 
 
