@@ -8,12 +8,12 @@ process.stdin.on('end', () => {
     for (let i = 0; i < test_cases; i++) {
         const [n, x] = input[line++].trim().split(' ').map(Number);
         const a = input[line++].trim().split(' ').map(Number);
-        const res = solution(n, x, a);
+        const res = solve(n, x, a);
         console.log(res);
     }
 });
 
 
-function solution(n, x, a) {
-    
+function solve() {
+
 }
