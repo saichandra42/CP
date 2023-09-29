@@ -3,17 +3,22 @@ process.stdin.on('data', c => i += c);
 process.stdin.on('end', () => {
     const {EOL} = require('os');
     const input = i.split(EOL);
-    const test_cases = Number(input[0]);
-    let line = 1;
+    let line = 0;
+    const test_cases = Number(input[line++]);
     for (let i = 0; i < test_cases; i++) {
-        const [n, x] = input[line++].trim().split(' ').map(Number);
-        const a = input[line++].trim().split(' ').map(Number);
-        const res = solve(n, x, a);
-        console.log(res);
+        let [n,m] = input[line++].trim().split(' ');
+        let a = input[line++].trim().split(' ').map(Number);
+        let b = input[line++].trim().split(' ').map(Number);
+        let [min,max] = solve(n,m,a,b);
+        console.log(`${min} ${max}`);
     }
 });
 
 
-function solve() {
+function solve(n,m,a,b) {
+    let xor = a.reduce((acc,current) => acc ^ current,0);
+    let or = b.reduce((acc,current) => acc | current,0);
+    let all = a.reduce((acc,current) => acc ^ (current | or),0);
+    return (n & 1) ? [xor, all]: [all,xor]; 
+};
 
-}
